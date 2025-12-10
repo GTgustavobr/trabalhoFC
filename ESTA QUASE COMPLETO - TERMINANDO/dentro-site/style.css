@@ -1217,6 +1217,12 @@ h2 {
     }
 }
 
-
+/* No seu style.css, verifique se a classe está parecida com isso */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Importante para os cards se reajustarem */
+    gap: 20px;
+    justify-content: center;
+}
 
 

@@ -1,0 +1,81 @@
+* {
+  /* Seleciona todos os elementos da página */
+  margin: 0; /* Remove margem padrão */
+  padding: 0; /* Remove padding padrão */
+  border: 0; /* Remove borda padrão */
+}
+
+body {
+  /* Estilo do corpo da página */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fonte do site */
+  background-color: #f0f2f5; /* Cor de fundo clara */
+  display: flex; /* Layout flexível */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh; /* Altura da tela inteira */
+}
+
+.Login-container {
+  /* Container do formulário de login */
+  background-color: #fff; /* Fundo branco */
+  padding: 20px 30px; /* Espaçamento interno: 20px topo/baixo, 30px lados */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0.2); /* Sombra suave ao redor */
+  text-align: center; /* Centraliza texto dentro do container */
+  width: 350px; /* Largura fixa do container */
+  height: 300px; /* Altura fixa do container */
+}
+
+h2 {
+  /* Título do formulário */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  color: 333; /* Cor do texto (⚠️ deveria ser #333 para funcionar) */
+}
+
+.form-group {
+  /* Grupo de campos do formulário */
+  margin-bottom: 0px; /* Espaço inferior entre campos (ajustado depois) */
+  text-align: left; /* Alinha o conteúdo à esquerda */
+}
+
+label {
+  /* Estilo dos labels */
+  display: block; /* Ocupa linha inteira */
+  font-size: 14px; /* Tamanho da fonte */
+  margin-bottom: 5px; /* Espaço abaixo do label */
+  color: #333; /* Cor do texto */
+}
+
+input {
+  /* Estilo para inputs */
+  width: 100%; /* Ocupa toda a largura do container */
+  padding: 10px; /* Espaçamento interno */
+  font-size: 14px; /* Tamanho da fonte */
+  border: 1px solid #ddd; /* Borda clara */
+  border-radius: 5px; /* Bordas arredondadas */
+  outline: none; /* Remove contorno ao focar */
+}
+
+button {
+  /* Estilo do botão */
+  background-color: #1a2041; /* Cor de fundo azul escuro */
+  color: #fff; /* Cor do texto branca */
+  padding: 15px 15px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor muda para mãozinha */
+  font-size: 16px; /* Tamanho da fonte do botão */
+  display: block; /* Garante que o botão fique sozinho na linha */
+  margin: 20px auto 0; /* Espaço acima e centralizado horizontalmente */
+}
+
+.form-group {
+  /* Ajuste final do grupo de campos */
+  margin-bottom: 15px; /* Espaço maior entre campos e botão */
+  text-align: left; /* Alinha os elementos à esquerda */
+}
+
+button:hover {
+  /* Efeito ao passar o mouse sobre o botão */
+  background-color: aquamarine; /* Muda a cor do botão */
+}

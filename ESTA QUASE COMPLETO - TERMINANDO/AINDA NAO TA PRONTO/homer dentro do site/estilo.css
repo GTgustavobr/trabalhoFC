@@ -1,0 +1,309 @@
+/* Reset simples */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, "Helvetica Neue", Arial, sans-serif; color: #222; background: #fafafa; }
+
+/* ------------------------------ NAVBAR --------------------- */
+/* ------------------------------ NAVBAR --------------------- */
+.navbar {
+  background-color: #1b1f2a; /* cinza escuro mais claro que a hero section */
+  border-bottom: 1px solid #2a2f3e;
+  position: relative;
+  z-index: 50;
+  padding: 18px 0;
+}
+
+.nav-inner {
+  width: 1140px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap; /* garante que itens não quebrem feio */
+}
+
+.nav-item {
+  position: relative;
+  width: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 2px 6px;
+  color: #f5f5f5; /* cor padrão do texto */
+}
+
+.icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2f3e; /* leve contraste com fundo navbar */
+  transition: background 200ms ease, transform 160ms ease;
+}
+
+.icon-wrap i {
+  font-size: 24px;
+  color: #43a4ff; /* azul neon pra combinar */
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.nav-item span {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #f5f5f5; /* texto abaixo do ícone */
+}
+
+/* hover: ícone destaca com azul neon e leve elevação */
+.nav-item:hover .icon-wrap {
+  background: #43a4ff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(67, 164, 255, 0.25);
+}
+
+.nav-item:hover .icon-wrap i {
+  color: #1b1f2a; /* ícone escuro dentro do hover azul */
+  transform: translateY(-2px);
+}
+
+/* -------------------- DROPDOWN -------------------- */
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: 780px;
+  background: #1b1f2a; /* mesmo tom da navbar, só mais escuro se quiser */
+  border-radius: 8px;
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu .col h4 {
+  color: #f5f5f5;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu .col a {
+  display: block;
+  color: #43a4ff;
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-menu .col a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 1100px) {
+  .nav-inner {
+    width: 96%;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .dropdown-menu {
+    left: 50%;
+    width: 92%;
+    transform: translateX(-50%);
+    top: 120%;
+  }
+}
+
+/* ------------------------------ HERO / BANNER --------------------- */
+.hero {
+  padding: 36px 0 60px;
+  
+}
+.hero-inner {
+  width: 1140px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.hero-left {
+  flex: 1;
+}
+.hero-right {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* título grande */
+.hero-left h1 {
+  font-size: 42px;
+  margin: 6px 0 12px;
+  line-height: 1.02;
+  color: #111;
+}
+.subtitle {
+  color: #6b6b6b;
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+/* ------------------------------ HERO / IMAGEM --------------------- */
+
+.hero-right {
+    width: 100%;
+    height: 100%;
+    max-width: 400px; /* ajusta se quiser maior ou menor */
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-full-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* animação suave */
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* ================= BARRA DE PESQUISA ================= */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.search-bar input[type="search"] {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  font-size: 15px;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.search-bar input[type="search"]:hover {
+  border-color: #007BFF;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.search-bar button {
+  background: #007BFF;
+  border: none;
+  font-size: 18px;
+  padding: 12px 16px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search-bar button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* ===============  ICONE DE FILTRO =============== */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrap i {
+  position: absolute;
+  left: 63vh;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.input-wrap i:hover {
+  transform: translateY(-50%) scale(1.2);
+  color: #007bff; /* muda a cor se quiser */
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 10px 12px 10px 40px; /* espaço pro ícone */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+/* ================= PLACEHOLDER ANIMADO (SOMENTE FRASE) ================= */
+.search-bar input[type="search"] {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* tags populares */
+.popular {
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.popular strong { font-weight: 600; font-size: 14px; margin-right: 8px; color:#333;}
+.tags a {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-right: 8px;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  font-size: 13px;
+  text-decoration: none;
+  color: #444;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.tags a:hover { background: #60a6fa; transform: translateY(-3px); }
+
+
+/* ============================= RESPONSIVO básico ================================= */
+
+@media (max-width: 1100px) {
+  .nav-inner { width: 96%; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .dropdown-menu { left: 50%; width: 92%; transform: translateX(-50%); top: 120%; }
+  .hero-inner { flex-direction: column-reverse; gap: 20px; }
+  .hero-right { width: 100%; }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html> <!-- Define o documento como HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
+<head>
+    <meta charset="UTF-8"> <!-- Suporte a caracteres especiais (acentos, ç, etc) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade: ajusta para telas menores -->
+    <title>Document</title> <!-- Título da aba do navegador -->
+    <link rel="stylesheet" href="estilo.css" /> <!-- Importa o CSS externo -->
+</head>
+<body>
+    <section> <!-- Seção principal da página -->
+        <div class="grid"> <!-- Container com layout em grid -->
+            <div class="img revela"> <!-- Div que contém a imagem + efeito de revelação -->
+               <img src="Capturar.PNG" alt=""> <!-- Imagem exibida -->
+            </div>
+            <div class="texto revela"> <!-- Div com texto + efeito de revelação -->
+                <p>Óculos de Realidade </p> <!-- Texto exibido -->
+                <P>Virtual</P>
+            </div>
+        </div> <!-- Fecha o grid -->
+    </section>
+
+    <script>
+        const reveals = document.querySelectorAll('.revela'); 
+        // Seleciona todos os elementos que têm a classe "revela"
+
+        const observer = new IntersectionObserver((entries) => {
+            // Cria um observador para monitorar quando os elementos aparecem na tela
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Se o elemento está visível no viewport
+                    entry.target.classList.add('active'); 
+                    // Adiciona a classe "active" pra ativar a animação no CSS
+                }
+            });
+        }, {
+            threshold: 0.3 // Define que o elemento precisa estar 30% visível para ativar
+        });
+
+        reveals.forEach((r => observer.observe(r)));
+        // Para cada elemento com a classe "revela", ativa o observador
+    </script>
+</body>
+</html>

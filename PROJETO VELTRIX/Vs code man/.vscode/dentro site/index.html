@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- Define que é HTML5 -->
+<html lang="pt-br">
+  <!-- Define idioma como português do Brasil -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsividade em dispositivos móveis -->
+    <title>Menu Gamer com Hambúrguer</title>
+    <!-- Título da página -->
+
+    <style>
+      /* RESET BÁSICO */
+      * {
+        margin: 0; /* Remove margens padrão */
+        padding: 0; /* Remove padding padrão */
+        box-sizing: border-box; /* Inclui padding e border na largura */
+      }
+
+      html {
+        scroll-behavior: smooth; /* Rolagem suave ao clicar em links internos */
+      }
+
+      body {
+        font-family: "Roboto", sans-serif; /* Fonte do site */
+        height: 100vh; /* Altura total da tela */
+        background: #0a0a0a; /* Fundo escuro gamer */
+      }
+
+      /* HEADER FIXO */
+      header {
+        height: 60px; /* Altura do cabeçalho */
+        padding: 10px 20px; /* Espaçamento interno */
+        background: #0e0e3b; /* Fundo azul escuro */
+        display: flex; /* Layout flexível */
+        justify-content: center; /* Centraliza conteúdo horizontalmente */
+        align-items: center; /* Centraliza conteúdo verticalmente */
+        position: fixed; /* Fixa o header */
+        width: 100%; /* Largura total */
+        z-index: 1003; /* Fica acima do menu lateral */
+      }
+
+      nav ul {
+        list-style: none; /* Remove marcadores da lista */
+        display: flex; /* Lista em linha */
+        gap: 15px; /* Espaço entre itens */
+      }
+
+      nav ul li a {
+        text-decoration: none; /* Remove sublinhado dos links */
+        color: #0ff; /* Azul neon */
+        font-weight: bold; /* Negrito nos links */
+        transition: color 0.3s, text-shadow 0.3s; /* Animação suave ao passar o mouse */
+      }
+
+      nav ul li a:hover {
+        color: #ff0; /* Amarelo neon no hover */
+        text-shadow: 0 0 10px #ff0, 0 0 20px #0ff; /* Glow neon */
+      }
+
+      /* SEÇÕES DA PÁGINA */
+      section {
+        height: calc(100vh - 80px); /* Altura total menos header */
+        padding-top: 80px; /* Evita que conteúdo fique atrás do header */
+        display: flex; /* Layout flexível */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        font-size: 2rem; /* Tamanho do texto */
+        color: #0ff; /* Texto azul neon */
+        text-shadow: 0 0 5px #0ff; /* Glow leve no texto */
+      }
+
+      /* BOTÃO HAMBÚRGUER */
+      #menu-toggle {
+        display: none; /* Checkbox escondido */
+      }
+
+      .menu-btn {
+        position: fixed; /* Fixo na tela */
+        top: 20px; /* Distância do topo */
+        left: 20px; /* Distância da esquerda */
+        width: 30px; /* Largura do botão */
+        height: 25px; /* Altura do botão */
+        cursor: pointer; /* Cursor de mãozinha */
+        z-index: 1004; /* Fica acima de tudo */
+        display: flex; /* Layout flexível */
+        flex-direction: column; /* Linhas empilhadas verticalmente */
+        justify-content: space-between; /* Espaço igual entre linhas */
+      }
+
+      .menu-btn span {
+        display: block; /* Exibe cada linha como bloco */
+        height: 3px; /* Altura da linha do hambúrguer */
+        width: 100%; /* Largura total do botão */
+        background: #0ff; /* Azul neon */
+        border-radius: 3px; /* Bordas arredondadas */
+        transition: 0.3s; /* Transição suave */
+        box-shadow: 0 0 5px #0ff, 0 0 10px #0ff; /* Glow neon */
+      }
+
+      /* MENU LATERAL */
+      .slide-menu {
+        position: fixed; /* Fixo na tela */
+        top: 0; /* Topo da tela */
+        left: -250px; /* Começa fora da tela */
+        width: 250px; /* Largura do menu */
+        height: 100%; /* Altura total da tela */
+        background: #1a2041; /* Fundo azul escuro */
+        color: #0ff; /* Texto azul neon */
+        padding-top: 60px; /* Espaço superior */
+        transition: left 0.3s ease; /* Animação suave */
+        z-index: 1002; /* Fica abaixo do botão */
+        box-shadow: 5px 0 20px #0ff; /* Sombra neon lateral */
+      }
+
+      .slide-menu ul {
+        list-style: none; /* Remove marcadores */
+      }
+
+      .slide-menu ul li {
+        padding: 15px 20px; /* Espaçamento interno */
+        border-bottom: 1px solid rgba(0, 255, 255, 0.3); /* Linha de separação neon leve */
+        transition: background 0.3s, text-shadow 0.3s; /* Transição suave no hover */
+      }
+
+      .slide-menu ul li:hover {
+        background: rgba(
+          0,
+          255,
+          255,
+          0.1
+        ); /* Fundo semi-transparente no hover */
+        cursor: pointer; /* Cursor de mãozinha */
+        text-shadow: 0 0 10px #0ff; /* Glow no texto ao passar mouse */
+      }
+
+      /* OVERLAY */
+      .overlay {
+        position: fixed; /* Fixo na tela */
+        top: 0; /* Topo */
+        left: 0; /* Esquerda */
+        width: 100%; /* Largura total */
+        height: 100%; /* Altura total */
+        background: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+        opacity: 0; /* Inicialmente invisível */
+        pointer-events: none; /* Não permite clique quando invisível */
+        transition: opacity 0.3s ease; /* Animação suave */
+        z-index: 1001; /* Fica abaixo do menu lateral */
+      }
+
+      /* ESTADOS QUANDO O MENU ESTÁ ABERTO */
+      #menu-toggle:checked ~ .slide-menu {
+        left: 0; /* Menu aparece */
+      }
+
+      #menu-toggle:checked ~ .overlay {
+        opacity: 1; /* Overlay aparece */
+        pointer-events: auto; /* Permite clique para fechar */
+      }
+
+      /* TRANSFORMAÇÃO DO BOTÃO EM X */
+      #menu-toggle:checked + .menu-btn span:nth-child(1) {
+        transform: rotate(45deg) translateY(13px); /* Linha superior gira */
+        background: #ff0; /* Amarelo neon */
+        box-shadow: 0 0 5px #ff0, 0 0 10px #ff0; /* Glow neon */
+      }
+
+      #menu-toggle:checked + .menu-btn span:nth-child(2) {
+        opacity: 0; /* Linha do meio desaparece */
+      }
+
+      #menu-toggle:checked + .menu-btn span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-13px); /* Linha inferior gira */
+        background: #ff0; /* Amarelo neon */
+        box-shadow: 0 0 5px #ff0, 0 0 10px #ff0; /* Glow neon */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Checkbox escondido que controla o menu -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <!-- Botão hambúrguer -->
+    <label for="menu-toggle" class="menu-btn">
+      <span></span>
+      <!-- Linha 1 do botão -->
+      <span></span>
+      <!-- Linha 2 do botão -->
+      <span></span>
+      <!-- Linha 3 do botão -->
+    </label>
+
+    <!-- Menu lateral -->
+    <div class="slide-menu">
+      <ul>
+        <li><a href="#Inicio">Inicio</a></li>
+        <!-- Link para Inicio -->
+        <li><a href="#Sobre">Sobre</a></li>
+        <!-- Link para Sobre -->
+        <li><a href="#Produtos">Produtos</a></li>
+        <!-- Link para Produtos -->
+        <li><a href="#Serviços">Serviços</a></li>
+        <!-- Link para Serviços -->
+        <li><a href="#Contato">Contato</a></li>
+        <!-- Link para Contato -->
+      </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+    <!-- Fundo escuro ao abrir menu -->
+
+    <!-- Header fixo com links -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#Inicio"> Inicio </a></li>
+          <!-- Link para Inicio -->
+          <li><a href="#Sobre"> Sobre </a></li>
+          <!-- Link para Sobre -->
+          <li><a href="#Produtos"> Produtos</a></li>
+          <!-- Link para Produtos -->
+          <li><a href="#Serviços"> Serviços</a></li>
+          <!-- Link para Serviços -->
+          <li><a href="#Contato"> Contato </a></li>
+          <!-- Link para Contato -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Seções da página -->
+    <section id="Inicio"><h2>Inicio</h2></section>
+    <!-- Seção Inicio -->
+    <section id="Sobre"><h2>Sobre</h2></section>
+    <!-- Seção Sobre -->
+    <section id="Produtos"><h2>Produtos</h2></section>
+    <!-- Seção Produtos -->
+    <section id="Serviços"><h2>Serviços</h2></section>
+    <!-- Seção Serviços -->
+    <section id="Contato"><h2>Contato</h2></section>
+    <!-- Seção Contato -->
+  </body>
+</html>

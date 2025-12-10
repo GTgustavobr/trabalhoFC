@@ -1,0 +1,204 @@
+/* ===== RESET ===== */
+* {
+    margin: 0; /* remove a margem padrão de todos os elementos */
+    padding: 0; /* remove o padding padrão de todos os elementos */
+    box-sizing: border-box; /* faz a largura incluir padding e borda */
+    font-family: "Poppins", sans-serif; /* define a fonte padrão */
+}
+
+/* ===== BODY ===== */
+body {
+    background-color: #020617; /* fundo preto-azulado escuro */
+    color: #fff; /* cor do texto padrão branca */
+    height: 100vh; /* altura ocupa a tela inteira */
+    display: flex; /* ativa flexbox */
+    justify-content: center; /* centraliza horizontalmente o conteúdo */
+    align-items: center; /* centraliza verticalmente o conteúdo */
+}
+
+/* ===== TITULO ===== */
+h1 {
+    font-size: 2rem; /* tamanho da fonte do título */
+    color: #60a5fa; /* cor azul clara */
+}
+
+/* ===== POPUP ===== */
+.popup {
+    display: none; /* inicialmente invisível */
+    opacity: 0; /* totalmente transparente */
+    transition: opacity 0.4s ease; /* transição suave de opacidade */
+    position: fixed; /* fixa em relação à tela inteira */
+    top: 0; /* topo da tela */
+    left: 0; /* lado esquerdo da tela */
+    width: 100%; /* ocupa toda largura */
+    height: 100%; /* ocupa toda altura */
+    background-color: rgba(0, 0, 0, 0.6); /* fundo preto translúcido */
+    justify-content: center; /* centraliza conteúdo horizontalmente */
+    align-items: center; /* centraliza conteúdo verticalmente */
+    z-index: 1000; /* fica acima de outros elementos */
+}
+
+/* ===== CONTEÚDO DA POPUP ===== */
+.popup-content {
+    background: rgba(10, 20, 40, 0.85); /* azul escuro translúcido */
+    padding: 30px; /* espaço interno ao redor do conteúdo */
+    border-radius: 15px; /* bordas arredondadas */
+    text-align: center; /* centraliza texto */
+    max-width: 400px; /* largura máxima da caixinha */
+    width: 90%; /* largura relativa à tela */
+    position: relative; /* necessário para elementos absolutos dentro */
+    transform: scale(0.85); /* escala inicial menor para animação */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* animação suave de transformação e sombra */
+    
+    /* efeito neon 🔥 */
+    box-shadow:
+      0 0 10px rgba(0, 50, 150, 0.5), /* brilho externo azul escuro */
+      0 0 25px rgba(0, 70, 200, 0.3), /* brilho externo mais suave */
+      inset 0 0 15px rgba(0, 50, 150, 0.4); /* brilho interno */
+    border: 1px solid rgba(0, 80, 200, 0.4); /* borda azul translúcida */
+}
+
+.popup-content.show {
+    transform: scale(1); /* aumenta escala quando ativada */
+}
+
+.popup-img {
+    width: 120px; /* largura da imagem */
+    margin-bottom: 15px; /* espaço abaixo da imagem */
+    filter: drop-shadow(0 0 10px rgba(0, 100, 255, 0.5)); /* sombra azul neon na imagem */
+}
+
+.popup-content h2 {
+    margin-bottom: 10px; /* espaço abaixo do título */
+    color: #e0eaff; /* cor do título */
+    text-shadow: 0 0 8px rgba(0, 100, 255, 0.5); /* sombra azul neon no texto */
+}
+
+.popup-content p {
+    color: #cbd5e1; /* cor do parágrafo */
+    margin-bottom: 20px; /* espaço abaixo do parágrafo */
+}
+
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn-primary {
+    position: relative; /* necessário para o pseudo-elemento do laser */
+    overflow: hidden; /* esconde o laser fora do botão */
+    background-color: #2563eb; /* fundo azul */
+    color: white; /* cor do texto */
+    border: none; /* sem borda */
+    padding: 10px 20px; /* espaçamento interno */
+    border-radius: 8px; /* bordas arredondadas */
+    cursor: pointer; /* cursor de mão ao passar */
+    margin: 5px; /* espaço ao redor */
+    transition: background 0.3s, box-shadow 0.3s; /* transição suave */
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); /* sombra azul suave */
+}
+
+.btn-primary:hover {
+    background-color: #1e40af; /* azul mais escuro ao passar */
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6); /* sombra mais intensa */
+}
+
+/* ===== BOTÃO OUTLINE ===== */
+.btn-outline {
+    background: none; /* sem fundo */
+    border: 2px solid #2563eb; /* borda azul */
+    color: #2563eb; /* texto azul */
+    padding: 10px 20px; /* espaçamento interno */
+    border-radius: 8px; /* bordas arredondadas */
+    cursor: pointer; /* cursor de mão */
+    margin: 5px; /* espaço ao redor */
+    transition: all 0.3s; /* transição geral suave */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); /* sombra leve */
+}
+
+.btn-outline:hover {
+    background-color: #2563eb; /* fundo azul ao passar */
+    color: #fff; /* texto branco ao passar */
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6); /* sombra azul neon */
+}
+
+/* ===== LASER BTN-PRIMARY ===== */
+.btn-primary::before {
+    content: ""; /* pseudo-elemento vazio */
+    position: absolute; /* posicionamento absoluto dentro do botão */
+    top: 0; /* topo do botão */
+    left: -75%; /* começa fora do botão à esquerda */
+    width: 50%; /* largura do laser */
+    height: 100%; /* altura cobre todo botão */
+    background: linear-gradient(
+      120deg,
+      rgba(30, 64, 175, 0) 0%, /* transparente na borda esquerda */
+      rgba(80, 120, 255, 0.4) 50%, /* azul no centro */
+      rgba(30, 64, 175, 0) 100% /* transparente na borda direita */
+    );
+    transform: skewX(-25deg); /* inclina o laser para dar efeito */
+    transition: left 2.0s ease; /* duração da animação */
+    pointer-events: none; /* não interfere em cliques */
+}
+
+/* Quando passa o mouse, o laser atravessa o botão */
+.btn-primary:hover::before {
+    left: 130%; /* animação atravessa o botão da esquerda para a direita */
+}
+
+/* ===== PULSAR NEON ===== */
+@keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); /* sombra inicial/final */
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); /* sombra mais intensa no meio */
+    }
+}
+.btn-primary:hover {
+    animation: pulse-glow 1.2s ease-in-out infinite; /* animação pulsante contínua */
+}
+
+/* ===== LASER BTN-OUTLINE ===== */
+.btn-outline {
+    position: relative; /* necessário para pseudo-elemento */
+    overflow: hidden; /* laser não vaza fora do botão */
+    background: none; /* sem fundo */
+    border: 2px solid #2563eb; /* borda azul */
+    color: #2563eb; /* texto azul */
+    padding: 10px 20px; /* espaçamento interno */
+    border-radius: 8px; /* bordas arredondadas */
+    cursor: pointer; /* cursor de mão */
+    margin: 5px; /* espaço ao redor */
+    transition: all 0.3s; /* transição suave */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); /* sombra leve */
+}
+
+.btn-outline::before {
+    content: ""; /* pseudo-elemento vazio */
+    position: absolute; /* posicionamento absoluto */
+    top: 0; /* topo do botão */
+    right: -50%; /* começa fora do botão à direita */
+    width: 38%; /* largura do laser */
+    height: 100%; /* altura cobre botão */
+    background: linear-gradient(
+      120deg,
+      rgba(30, 64, 175, 0) 0%, /* transparente na borda direita */
+      rgba(214, 224, 255, 0.205) 50%, /* azul suave no centro */
+      rgba(30, 64, 175, 0) 100% /* transparente na borda esquerda */
+    );
+    transform: skewX(25deg); /* inclina o laser para a outra direção */
+    transition: right 2s ease; /* duração da animação */
+    pointer-events: none; /* não interfere em cliques */
+}
+
+.btn-outline:hover::before {
+    right: 100%; /* animação atravessa o botão da direita para esquerda */
+}
+  
+/* ===== BOTÃO DE FECHAR ===== */
+.close-btn {
+    position: absolute; /* posiciona em relação à popup-content */
+    top: 10px; /* distância do topo */
+    right: 15px; /* distância da direita */
+    font-size: 22px; /* tamanho do X */
+    cursor: pointer; /* cursor de mão */
+    color: #93c5fd; /* azul claro */
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.8); /* efeito neon azul */
+}

@@ -1,0 +1,140 @@
+* {
+  /* Seleciona todos os elementos da página */
+  margin: 0; /* Remove a margem padrão */
+  padding: 0; /* Remove o padding padrão */
+  box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+}
+
+body {
+  /* Estilo do corpo da página */
+  font-family: Arial, Helvetica, sans-serif; /* Define a fonte do site */
+  width: 100%; /* Largura total da tela */
+  scroll-behavior: smooth; /* Rolagem suave ao clicar em links internos */
+}
+
+header {
+  /* Estilo do cabeçalho fixo */
+  background-color: black; /* Cor de fundo preta */
+  color: white; /* Cor do texto branca */
+  height: 60px; /* Altura do header */
+  display: flex; /* Layout flexível */
+  justify-content: space-between; /* Espaço entre os itens do header */
+  align-items: center; /* Alinha itens verticalmente ao centro */
+  padding: 0 30px; /* Espaçamento interno lateral */
+  position: fixed; /* Mantém o header fixo no topo */
+  top: 0; /* Posiciona no topo da tela */
+  left: 0; /* Alinha à esquerda */
+  right: 0; /* Alinha à direita */
+  z-index: 1000; /* Mantém o header acima de outros elementos */
+}
+
+ul {
+  /* Estilo da lista de navegação */
+  list-style: none; /* Remove marcadores */
+  display: flex; /* Exibe itens em linha */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+li {
+  /* Estilo para itens da lista */
+  cursor: pointer; /* Cursor muda para mãozinha ao passar por cima */
+}
+
+a {
+  /* Estilo para links */
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor branca para os links */
+}
+
+section {
+  /* Estilo para seções da página */
+  height: 100vh; /* Altura igual à altura da tela */
+  display: flex; /* Layout flexível */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: flex-start; /* Alinha conteúdo no topo da seção */
+  border-bottom: 1px solid red; /* Linha vermelha separando seções */
+  scroll-margin-top: 60px; /* Espaço de margem ao rolar para seção (não ficar atrás do header) */
+}
+
+/* Container cinza centralizado */
+.container {
+  /* Estilo do container principal */
+  max-width: 1200px; /* Largura máxima */
+  width: 100%; /* Largura total até o limite */
+  margin-top: 100px; /* Espaço acima do container */
+  background: gray; /* Cor de fundo cinza */
+  padding: 30px; /* Espaçamento interno */
+  height: 80%; /* Altura do container */
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Itens dispostos em coluna */
+  align-items: center; /* Centraliza itens horizontalmente */
+}
+
+#Contato-container {
+  /* Container específico da seção de contato */
+  height: auto; /* Altura automática conforme conteúdo */
+  display: flex; /* Layout flexível */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+/* Cards */
+.cards-container {
+  /* Container dos cards */
+  width: 100%; /* Largura total */
+  display: flex; /* Layout flexível */
+  background-color: rgb(29, 29, 83); /* Fundo azul escuro */
+  justify-content: space-evenly; /* Espaçamento uniforme entre cards */
+  flex-wrap: wrap; /* Permite quebrar linha se não couber */
+  margin-top: 20px; /* Espaço acima do container */
+}
+
+.card {
+  /* Estilo de cada card individual */
+  height: 280px; /* Altura do card */
+  width: 240px; /* Largura do card */
+  background-color: rgb(31, 80, 164); /* Fundo azul médio */
+  margin: 10px; /* Espaço ao redor do card */
+}
+
+/* Formulário */
+.form {
+  /* Container do formulário */
+  background: rgb(32, 44, 85); /* Fundo azul escuro */
+  padding: 20px; /* Espaçamento interno */
+  width: 100%; /* Largura total */
+  max-width: 600px; /* Largura máxima */
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Itens em coluna */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  margin-top: 40px; /* Espaço acima do formulário */
+}
+
+.form label {
+  /* Estilo dos labels do formulário */
+  display: block; /* Ocupa linha inteira */
+  margin-top: 10px; /* Espaço acima do label */
+  font-weight: bold; /* Texto em negrito */
+  color: white; /* Cor do texto branca */
+}
+
+.form input, /* Estilo para inputs */
+.form textarea {
+  /* Estilo para textarea */
+  width: 100%; /* Largura total */
+  margin-top: 5px; /* Espaço acima do campo */
+  padding: 10px; /* Espaçamento interno */
+  border: none; /* Remove borda padrão */
+  border-radius: 5px; /* Bordas arredondadas */
+}
+
+.form button {
+  /* Estilo do botão do formulário */
+  margin-top: 20px; /* Espaço acima do botão */
+  padding: 20px; /* Espaçamento interno do botão */
+  background-color: rgb(61, 124, 234); /* Fundo azul claro */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor muda para mãozinha ao passar por cima */
+}

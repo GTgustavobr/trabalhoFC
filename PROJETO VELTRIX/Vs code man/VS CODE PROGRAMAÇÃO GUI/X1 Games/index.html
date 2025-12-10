@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Define que o documento é HTML5 -->
+<html lang="pt-BR">
+  <!-- Define o idioma da página como português do Brasil -->
+  <head>
+    <!-- Início do cabeçalho da página -->
+    <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres como UTF-8 (suporta acentos e caracteres especiais) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Faz o site se adaptar a dispositivos móveis (responsividade) -->
+    <title>Document</title>
+    <!-- Título que aparece na aba do navegador -->
+    <style>
+      /* Início do CSS interno */
+      body {
+        /* Estilo aplicado ao corpo da página */
+        display: flex; /* Define layout flexível */
+        justify-content: center; /* Centraliza o conteúdo horizontalmente */
+      }
+      h1 {
+        /* Estilo para o título h1 */
+        font-weight: 900; /* Deixa a fonte bem grossa/negrito */
+        color: #000000; /* Define a cor do texto como preto */
+        text-align: 0 0 0 #00f0f0; /* (⚠️ errado, não existe assim) deveria ser "text-shadow" ou "text-align: center;" */
+        font-family: "Arial Black", Gadget, sans-serif; /* Define a família da fonte, com fallback */
+        font-size: 60px; /* Define o tamanho da fonte em 60 pixels */
+        animation: rotate 2s infinite; /* Aplica a animação chamada "rotate", duração 2s, repetição infinita */
+      }
+
+      @keyframes rotate {
+        /* Cria a animação chamada "rotate" */
+        0% {
+          /* Estado inicial (0% do tempo) */
+          text-shadow: 5px 0 #00f0f0; /* Cria uma sombra azul clara deslocada para a direita */
+        }
+        50% {
+          /* Estado no meio da animação (50%) */
+          text-shadow: -5px 0 #00f0f0; /* Sombra azul clara deslocada para a esquerda */
+        }
+        100% {
+          /* Estado final (100%) */
+          text-shadow: 5px 0 #00f0f0; /* Volta a sombra para a direita */
+        }
+      }
+    </style>
+    <!-- Fim do CSS interno -->
+  </head>
+  <!-- Fim do cabeçalho -->
+  <body>
+    <!-- Início do corpo da página -->
+    <div class="ilusao">
+      <!-- Div que envolve o título, classe chamada "ilusao" -->
+      <h1>X1 GAMES</h1>
+      <!-- Título principal que vai receber os estilos e animação -->
+    </div>
+  </body>
+  <!-- Fim do corpo -->
+</html>
+<!-- Fim do documento HTML -->

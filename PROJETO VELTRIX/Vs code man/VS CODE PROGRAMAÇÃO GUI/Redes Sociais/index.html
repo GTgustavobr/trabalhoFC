@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- Define que é HTML5 -->
+<html lang="pt-BR">
+  <!-- Linguagem da página -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Suporte a caracteres especiais -->
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0 initial-scale=1.0"
+    />
+    <!-- Configuração de responsividade -->
+
+    <!-- Importa Font Awesome para os ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+    <!-- Título da página -->
+    <style>
+      /* ===== BODY ===== */
+      body {
+        background: #081544; /* Cor de fundo cinza claro */
+        display: flex; /* Flexbox para centralizar conteúdo */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        height: 60vh; /* Altura do container */
+        gap: 20px; /* Espaçamento entre elementos */
+        perspective: 1000px; /* Permite efeito 3D em transformações */
+        font-family: Arial, Helvetica, sans-serif; /* Fonte padrão */
+      }
+
+      /* ===== BOTÃO SOCIAL ===== */
+      .social-btn {
+        width: 140px; /* Largura do botão */
+        height: 50px; /* Altura do botão */
+        background: rgb(0, 0, 0); /* Cor de fundo branca */
+        display: flex; /* Flexbox para alinhar ícone e texto */
+        align-items: center; /* Alinha verticalmente */
+        justify-content: center; /* Alinha horizontalmente */
+        gap: 10px; /* Espaço entre ícone e texto */
+        border: none; /* Remove borda padrão */
+        box-shadow: 0 15px 0 rgba(0, 0, 0, 0.15); /* Sombra do botão */
+        transform: rotateX(30deg); /* Inclinação inicial do botão */
+        transform-origin: bottom; /* Ponto de rotação na parte inferior */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza animação */
+        cursor: pointer; /* Cursor muda para mãozinha */
+      }
+
+      /* ===== HOVER ===== */
+      .social-btn:hover {
+        transform: rotateX(-20deg) translateY(-10px); /* Inclina pra frente e levanta levemente */
+        box-shadow: 0 25px 20px rgba(0, 0, 0, 0.2); /* Sombra maior ao passar o mouse */
+      }
+
+      /* ===== COR DO BOTÃO ===== */
+      .social-btn {
+        color: #1877f2; /* Cor azul do Facebook */
+      }
+      .social-btn.chat {
+        color: #e1306c; /* Cor do Instagram */
+      }
+      .social-btn.WhatsApp {
+        color: #25d366; /* Cor do WhatsApp */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="social-btn facebook">
+      <i class="fa-brands fa-facebook"></i>
+      <!-- Ícone do Facebook -->
+      <span>Facebook</span>
+      <!-- Texto do botão -->
+    </div>
+
+    <div class="social-btn chat">
+      <i class="fa-brands fa-instagram"></i>
+      <!-- Ícone do Instagram -->
+      <span>Instagram</span>
+      <!-- Texto do botão -->
+    </div>
+
+    <div class="social-btn WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <!-- Ícone do WhatsApp -->
+      <span>WhatsApp</span>
+      <!-- Texto do botão -->
+    </div>
+  </body>
+</html>

@@ -2,34 +2,34 @@ const profissionais = [
     {
         id: 1,
         nome: "João Silva",
-        profissao: "",
-        descricao: "",
+        profissao: "Eletricista",
+        descricao: "Serviços rápidos e seguros em instalações elétricas.",
         avaliacao: "",
-        imagem: ""
+        imagem: "https://www.shutterstock.com/shutterstock/photos/2682948513/display_1500/stock-photo-solar-panel-happy-man-and-portrait-of-engineer-with-arms-crossed-on-roof-in-city-photovoltaic-2682948513.jpg"
     },
     {
         id: 2,
-        nome: "Maria Souza",
-        profissao: "",
-        descricao: "",
+        nome: "Maria Oliveira",
+        profissao: "Pintora",
+        descricao: "Transforme seu ambiente com cores vivas e acabamento profissional.",
         avaliacao: "",
-        imagem: "../imagens para o site/iStock-1017296544-1024x683-1024x640.jpg"
+        imagem: "https://www.shutterstock.com/shutterstock/photos/2684646245/display_1500/stock-photo-close-up-portrait-of-a-young-woman-with-curly-hair-wearing-a-red-striped-shirt-standing-outdoors-2684646245.jpg"
     },
     {
         id: 3,
-        nome: "Carlos Lima",
-        profissao: "",
-        descricao: "",
+        nome: "Ana Costa ",
+        profissao: "Jardineiro",
+        descricao: "Criação de logotipos, identidades visuais e material digital.",
         avaliacao: "",
-        imagem: ""
+        imagem: "https://tse3.mm.bing.net/th/id/OIP.tgy_iHKaFIYjoqCFgP-obgHaE9?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
         {
         id: 4,
-        nome: "abelha",
-        profissao: "",
-        descricao: "",
+        nome: "Rafael Gomes",
+        profissao: "Marceneiro",
+        descricao: "Móveis sob medida com qualidade e acabamento premium.   ",
         avaliacao: "",
-        imagem: ""
+        imagem: "https://www.shutterstock.com/shutterstock/photos/2706340785/display_1500/stock-photo-carpenter-portrait-and-man-with-arms-crossed-workshop-and-happy-for-craftsmanship-or-2706340785.jpg"
     }
     // Você pode adicionar infinitos profissionais aqui
 ];
@@ -100,10 +100,9 @@ function filtrarProfissionais() {
     const filtrados = profissionais.filter(prof => {
         // Cria uma string grande com todas as informações importantes
         const dadosBusca = [
-            prof.nome, 
-            prof.profissao, 
-            prof.categoria,
-            prof.descricao // Inclui a descrição para buscas mais amplas
+            
+            prof.profissao,
+          // Inclui a descrição para buscas mais amplas
         ].join(' ').toLowerCase();
 
         // Verifica se a string grande contém o termo de busca

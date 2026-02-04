@@ -126,6 +126,37 @@ body {
     background-color: hsl(0, 84%, 55%);
 }
 
+/* BOTAOO VOLTAR MAN */
+
+.btn-voltar {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  background-color: #6a7a9ccd;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow: 0 4px 10px rgba(11, 3, 117, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #1e40af;
+  box-shadow: 0 6px 15px rgba(37, 100, 235, 0.32);
+  transform: translateY(-1px);
+}
+
+
 /* Icons */
 .icon {
     width: 1.25rem;

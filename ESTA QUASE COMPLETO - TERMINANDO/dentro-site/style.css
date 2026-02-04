@@ -102,7 +102,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   opacity: 0;
   pointer-events: none;
-  visibility: hidden;
+  visiblity: hidden;
   transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
   z-index: 2000;           /* sempre por cima */
 }
@@ -1056,6 +1056,13 @@ h2 {
   background-color: #1e40af; /* azul mais escuro ao passar */
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.6); /* sombra mais intensa */
 }
+
+.btn-primary,
+.btn-outline {
+  display: inline-block;
+  text-decoration: none; /* tira sublinhado de link */
+}
+
 
 /* ===== BOTÃO OUTLINE ===== */
 .btn-outline {

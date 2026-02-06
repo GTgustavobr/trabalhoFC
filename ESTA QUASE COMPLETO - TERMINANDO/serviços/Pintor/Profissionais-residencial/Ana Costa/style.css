@@ -237,7 +237,7 @@ body {
   width: 100%;
   border-radius: 10px;
   display: block;
-  max-width: 380px;
+  max-width: 400px;
 }
 
 /* SECTIONS */
@@ -374,6 +374,33 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* valor serviço */
+
+.label-valor {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label-valor input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #000;
+  font-weight: normal;
+  cursor: default;
+  font-weight: bold;
+}
+
+.label-valor input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
 
 
 

@@ -7,7 +7,9 @@ let services = [
 // Atualiza dashboard
 function updateDashboard() {
     const statusCount = {Ativo:0, Concluído:0, Pendente:0, Erro:0};
-    services.forEach(s => { if(statusCount[s.status] !== undefined) statusCount[s.status]++; });
+    services.forEach(s => {
+        if (statusCount[s.status] !== undefined) statusCount[s.status]++;
+    });
 
     document.getElementById("activeServices").innerText = statusCount.Ativo;
     document.getElementById("completedServices").innerText = statusCount.Concluído;
@@ -16,6 +18,7 @@ function updateDashboard() {
 
     const tableBody = document.getElementById("serviceTable");
     tableBody.innerHTML = "";
+
     services.forEach(s => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -25,10 +28,22 @@ function updateDashboard() {
             <td>${s.status}</td>
             <td>${s.date}</td>
             <td>${s.postponeReason ? s.postponeReason : "-"}</td>
-            <td>
-                <button class="btn btn-sm btn-warning" onclick="editService(${s.id})">Editar</button>
-                <button class="btn btn-sm btn-secondary" onclick="openPostpone(${s.id})">Adiar</button>
-                <button class="btn btn-sm btn-danger" onclick="deleteService(${s.id})">Excluir</button>
+            <td class="d-flex gap-1 flex-wrap">
+                <button class="btn btn-sm btn-warning" onclick="editService(${s.id})">
+                    Editar
+                </button>
+
+                <button class="btn btn-sm btn-secondary" onclick="openPostpone(${s.id})">
+                    Adiar
+                </button>
+
+                <button class="btn btn-sm btn-success" onclick="openQuestionario(${s.id})">
+                    Questionário
+                </button>
+
+                <button class="btn btn-sm btn-danger" onclick="deleteService(${s.id})">
+                    Excluir
+                </button>
             </td>
         `;
         tableBody.appendChild(tr);
@@ -45,6 +60,7 @@ function updateCardClasses() {
         {id:"pendingServices", status:"pendente"},
         {id:"errorServices", status:"erro"}
     ];
+
     cards.forEach(c => {
         const card = document.getElementById(c.id).parentElement.parentElement;
         card.classList.remove("ativo","concluido","pendente","erro");
@@ -52,9 +68,9 @@ function updateCardClasses() {
     });
 }
 
-// Adicionar/Editar serviço
+// Adicionar / Editar serviço
 function addService(service) {
-    if(service.id) {
+    if (service.id) {
         services = services.map(s => s.id === service.id ? service : s);
     } else {
         service.id = services.length ? Math.max(...services.map(s => s.id)) + 1 : 1;
@@ -76,7 +92,7 @@ function editService(id) {
 
 // Excluir serviço
 function deleteService(id) {
-    if(confirm("Quer mesmo excluir esse serviço?")) {
+    if (confirm("Quer mesmo excluir esse serviço?")) {
         services = services.filter(s => s.id !== id);
         updateDashboard();
     }
@@ -85,13 +101,18 @@ function deleteService(id) {
 // Form adicionar/editar
 document.getElementById("serviceForm").addEventListener("submit", e => {
     e.preventDefault();
+
     const service = {
-        id: document.getElementById("editId").value ? parseInt(document.getElementById("editId").value) : null,
+        id: document.getElementById("editId").value
+            ? parseInt(document.getElementById("editId").value)
+            : null,
         name: document.getElementById("serviceName").value,
         client: document.getElementById("serviceClient").value,
         status: document.getElementById("serviceStatus").value,
-        date: document.getElementById("serviceDate").value
+        date: document.getElementById("serviceDate").value,
+        postponeReason: ""
     };
+
     addService(service);
     e.target.reset();
     document.getElementById("editId").value = "";
@@ -115,12 +136,21 @@ function savePostpone() {
     const id = parseInt(document.getElementById("postponeId").value);
     const reason = document.getElementById("postponeReason").value;
     const newDate = document.getElementById("postponeDate").value;
+
     const s = services.find(s => s.id === id);
     s.date = newDate;
     s.status = "Pendente";
     s.postponeReason = reason;
+
     updateDashboard();
     closeModal();
+}
+
+// BOTÃO QUESTIONÁRIO
+function openQuestionario(id) {
+    alert("Questonario não encontrado! ID: " + id);
+    // futuro:
+    // window.location.href = `questionario.html?id=${id}`;
 }
 
 // Inicializa

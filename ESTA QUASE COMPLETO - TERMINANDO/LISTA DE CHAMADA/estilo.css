@@ -20,8 +20,98 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== Navbar ===== */
 .navbar {
-    background-color: #343a40 !important;
+    background: linear-gradient(135deg, #001f3f, #0a0a0a);
+    padding: 20px;
 }
+
+/* Nome na Nav bar da Veltrix */
+
+.logo-veltrix {
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    animation: glowPulse 2.5s infinite ease-in-out;
+    transition: transform 0.25s ease, font-size 0.25s ease;
+    font-size: 25px;
+    left: 360px;
+}
+
+/* luz branca pulsando */
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 4px rgba(255,255,255,0.3),
+                     0 0 8px rgba(255,255,255,0.2);
+    }
+    50% {
+        text-shadow: 0 0 8px rgba(255,255,255,0.6),
+                     0 0 16px rgba(255,255,255,0.4);
+    }
+    100% {
+        text-shadow: 0 0 4px rgba(255,255,255,0.3),
+                     0 0 8px rgba(255,255,255,0.2);
+    }
+}
+
+/* hover: cresce e fica mais forte */
+.logo-veltrix:hover {
+    transform: scale(1.08);
+    text-shadow: 0 0 10px rgba(255,255,255,0.9),
+                 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* clique */
+.logo-veltrix:active {
+    transform: scale(0.95);
+}
+
+
+
+
+  /* Botoes com link */
+
+.nav-veltrix .nav-link {
+    position: relative;
+    font-weight: 500;
+    padding: 10px 14px;
+    Right: 380px;
+    font-size: bold;
+    transition: transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* hover = brilho + underline */
+.nav-veltrix .nav-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.826),
+        0 0 12px rgba(255,255,255,0.3);
+}
+
+.nav-veltrix .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.9);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-veltrix .nav-link:hover::after {
+    width: 70%;
+}
+
+/* active NÃO brilha */
+.nav-veltrix .nav-link.active {
+    font-weight: 600; /* só destaca no peso */
+}
+
+/* garante que active não force underline */
+.nav-veltrix .nav-link.active::after {
+    width: 0;
+}
+
 
 /* ===== Cards de status ===== */
 .cards-row {
